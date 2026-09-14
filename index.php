@@ -14,46 +14,51 @@ $dataTamu = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Buku Tamu</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
     <h1>Buku Tamu</h1>
-    <form action="./process.php" method="POST">
-        <p>
-            Nama: <br>
-            <input type="text" name="nama" required>
-        </p>
-        <p>
-            Email:<br>
-            <input type="email" name="email" required>
-        </p>
-        <p>
-            Pesan: <br>
-            <textarea name="pesan" required></textarea>
-        </p>
-        <button type="submit">Simpan</button>
-    </form>
-    <hr>
-    <h2>Daftar Tamu</h2>
+    <section class="main">
+        <form action="./process.php" method="POST">
+            <p>
+                Nama: <br>
+                <input type="text" name="nama" required>
+            </p>
+            <p>
+                Email:<br>
+                <input type="email" name="email" required>
+            </p>
+            <p>
+                Pesan: <br>
+                <textarea name="pesan" required></textarea>
+            </p>
+            <button type="submit">Simpan</button>
+        </form>
+        <div class="daftar-tamu">
+            <h2>Daftar Tamu</h2>
+            <div class="card">
+                <?php foreach ($dataTamu as $tamu): ?>
+                <h3>
+                    <?= htmlspecialchars($tamu["nama"]); ?>
+                </h3>
 
-    <?php foreach ($dataTamu as $tamu): ?>
-    <h3>
-        <?= htmlspecialchars($tamu["nama"]); ?>
-    </h3>
+                <p>
+                    Email:
+                    <?= htmlspecialchars($tamu["email"]); ?>
+                </p>
 
-    <p>
-        Email:
-        <?= htmlspecialchars($tamu["email"]); ?>
-    </p>
-
-    <p>
-        <?= htmlspecialchars($tamu["pesan"]); ?>
-    </p>
-    <small>
-        <?= $tamu["created_at"]; ?>
-    </small>
-    <hr>
-    <?php endforeach; ?>
+                <p>
+                    <?= htmlspecialchars($tamu["pesan"]); ?>
+                </p>
+                <small>
+                    <?= $tamu["created_at"]; ?>
+                </small>
+                <hr>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
 
 </body>
 
