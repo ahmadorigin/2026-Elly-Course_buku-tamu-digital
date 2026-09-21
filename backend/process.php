@@ -17,5 +17,5 @@ $stmt->execute([
     "pesan" => $pesan
 ]);
 
-header("Location: index.php");
+header("Location: ../index.php");
 exit;
