@@ -14,7 +14,7 @@ $dataTamu = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Buku Tamu</title>
-    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
@@ -39,22 +39,22 @@ $dataTamu = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h2>Daftar Tamu</h2>
             <div class="card">
                 <?php foreach ($dataTamu as $tamu): ?>
-                <h3>
-                    <?= htmlspecialchars($tamu["nama"]); ?>
-                </h3>
+                    <h3>
+                        <?= htmlspecialchars($tamu["nama"]); ?>
+                    </h3>
 
-                <p>
-                    Email:
-                    <?= htmlspecialchars($tamu["email"]); ?>
-                </p>
+                    <p>
+                        Email:
+                        <?= htmlspecialchars($tamu["email"]); ?>
+                    </p>
 
-                <p>
-                    <?= htmlspecialchars($tamu["pesan"]); ?>
-                </p>
-                <small>
-                    <?= $tamu["created_at"]; ?>
-                </small>
-                <hr>
+                    <p>
+                        <?= htmlspecialchars($tamu["pesan"]); ?>
+                    </p>
+                    <small>
+                        <?= $tamu["created_at"]; ?>
+                    </small>
+                    <hr>
                 <?php endforeach; ?>
             </div>
         </div>
