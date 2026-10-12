@@ -2,9 +2,13 @@
 
 require "./connection.php";
 
-$nama = $_POST["nama"];
-$email = $_POST["email"];
-$pesan = $_POST["pesan"];
+$nama = trim($_POST["nama"]);
+$email = trim($_POST["email"]);
+$pesan = trim($_POST["pesan"]);
+
+if ($nama == '' || $email == '' || $pesan == "") {
+    die("Semua data harus diisi.");
+}
 
 $sql = "INSERT INTO tb_tamu (nama, email, pesan)
         VALUES (:nama, :email, :pesan)";
